@@ -1,4 +1,4 @@
-var initialGifs = ["angry", "sad", "confused", "annoyed", "scared"]
+var topics = ["wtf", "bruh", "y tho", "yas queen", "srsly"]
 
 console.log("----- Start -----")
 
@@ -19,7 +19,7 @@ function displayInfo() {
 
             var newGif = $("<div class ='gif'>")
             var rating = response.data[i].rating
-            var ratingP = $("<p>").text("Gif Rating: " + rating)
+            var ratingP = $("<p>").text("This GIF is rated: " + rating)
 
             // using data.url (the gif url from the API) to create a new image div
             var gifDiv = $("<img>")
@@ -28,26 +28,24 @@ function displayInfo() {
 
             newGif.append(ratingP)
             newGif.append(gifDiv)
-
+            
             // puts the new gif in front of the old ones
             $("#gif-view").prepend(newGif)
-
-            results++
         }
     })
 }
 
 function createButtons() {
 
-    // so we do not have duplicate initialGifs buttons each time we search
+    // so we do not have duplicate topics buttons each time we search
     $("#buttons-view").empty();
 
-    for (var i = 0; i < initialGifs.length; i++) {
+    for (var i = 0; i < topics.length; i++) {
 
         var newButton = $("<button>")
         newButton.addClass("gif")
-        newButton.attr("data-name", initialGifs[i])
-        newButton.text(initialGifs[i].toLowerCase())
+        newButton.attr("data-name", topics[i])
+        newButton.text(topics[i].toLowerCase())
         $("#buttons-view").append(newButton)
     }
 }
@@ -56,9 +54,13 @@ $("#add-gif").on("click", function (event) {
     //to keep the HTML from refreshing automatically
     event.preventDefault()
     var gif = $("#gif-input").val().trim()
-    initialGifs.push(gif)
+    topics.push(gif)
+
+    console.log(topics)
 
     createButtons();
+    displayInfo()
+    stillMotion()
 })
 
 function stillMotion() {
@@ -76,4 +78,3 @@ function stillMotion() {
 $(document).on("click", ".gif", displayInfo)
 
 createButtons()
-displayInfo()
