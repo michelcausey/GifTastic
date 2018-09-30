@@ -1,0 +1,25 @@
+body {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 40px;
+}
+
+h1 {
+    font-family: 'Monoton', cursive;
+    font-size: 60px;
+    text-align: center;
+}
+
+.container {
+    background-color: #CCFFFF;
+    margin: 0px auto 0px auto;
+    width: 80%;
+}
+
+button {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 25px; 
+    background-color: white;
+    border: solid 1px black;
+    margin: 0px 5px 0px 5px;
+    padding: 5px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body style="background-image: url('./assets/images/wormz/wormz.png')">
+
+    <!-- Create a Search Bar -->
+
+    <div class="container">
+        <h1>GIF-TASTIC</h1>
+        <hr>
+        <div id="buttons-view"></div>
+        <hr>
+        <form id="gif-form">
+            <label for="gif-input">SEARCH GIF HERE: </label>
+            <input type="text" id="gif-input">
+            <input id="add-gif" type="submit" value="Gif Search">
+        </form>
+
+        <div id="gif-view"></div>
+
+    </div>
+
+    <script src="./assets/javascript/app.js"></script>
+
+    <!-- Instructions
+    Before you can make any part of our site work, you need to create an array of strings, each one related to a topic
+    that interests you. Save it to a variable called topics.
+
+    We chose animals for our theme, but you can make a list to your own liking.
+    Your app should take the topics in this array and create buttons in your HTML.
+
+    Try using a loop that appends a button for each string in the array.
+    When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and
+    place them on the page.
+
+    When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it
+    should stop playing.
+
+    Under every gif, display its rating (PG, G, so on).
+
+    This data is provided by the GIPHY API.
+    Only once you get images displaying with button presses should you move on to the next step.
+    Add a form to your page takes the value from a user input box and adds it into your topics array. Then make a
+    function call that takes each topic in the array remakes the buttons on the page.
+
+    Deploy your assignment to Github Pages.
+
+    Rejoice! You just made something really cool. -->
+
+</body>
+
+</html>
