@@ -1,4 +1,4 @@
-var initialGifs = ["dogs", "cats", "fish", "birds", "goats"]
+var initialGifs = ["angry", "sad", "confused", "annoyed", "scared"]
 
 console.log("----- Start -----")
 
@@ -13,23 +13,27 @@ function displayInfo() {
     }).then(function (response) {
         console.log(response)
 
-        // add a new div for each search, display the rating of the gif (G)
-        var newGif = $("<div class ='gif'>")
-        var rating = response.data.rating
-        var ratingP = $("<p>").text("Gif Rating: " + rating)
-        newGif.append(ratingP)
+        var results = response.data
 
-        // using data.url (the gif url from the API) to create a new image div
-        var gifURL = response.data.url
-        var gifDiv = $("<img>")
-        gifDiv.attr("src", gifURL)
-        $("#gif-view").html(gifDiv)
+        for (var i = 0; i < results.length; i++) {
 
-        console.log(gifURL)
+            var newGif = $("<div class ='gif'>")
+            var rating = response.data[i].rating
+            var ratingP = $("<p>").text("Gif Rating: " + rating)
 
-        // puts the new gif in front of the old ones
+            // using data.url (the gif url from the API) to create a new image div
+            var gifDiv = $("<img>")
+            gifDiv.attr("src", response.data[i].images.fixed_height.url)
+            $("#gif-view").html(gifDiv)
 
-        $("#gif-view").prepend(newGif)
+            newGif.append(ratingP)
+            newGif.append(gifDiv)
+
+            // puts the new gif in front of the old ones
+            $("#gif-view").prepend(newGif)
+
+            results++
+        }
     })
 }
 
@@ -48,17 +52,28 @@ function createButtons() {
     }
 }
 
-$("#add-gif").on("click", function(event){
+$("#add-gif").on("click", function (event) {
     //to keep the HTML from refreshing automatically
     event.preventDefault()
-
     var gif = $("#gif-input").val().trim()
-
     initialGifs.push(gif)
 
     createButtons();
 })
 
+function stillMotion() {
+    var state = $(this).attr("data-state")
+
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"))
+        $(this).attr("data-state", "animate")
+    } else {
+        $(this).attr("src", $(this).attr("data-still"))
+        $(this).attr("data-state", "still")
+    }
+}
+
 $(document).on("click", ".gif", displayInfo)
 
 createButtons()
+displayInfo()
