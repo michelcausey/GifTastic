@@ -24,7 +24,6 @@ function displayInfo() {
             // using data.url (the gif url from the API) to create a new image div
             var gifDiv = $("<img>")
             gifDiv.attr("src", response.data[i].images.fixed_height.url)
-            $("#gif-view").html(gifDiv)
 
             newGif.append(ratingP)
             newGif.append(gifDiv)
